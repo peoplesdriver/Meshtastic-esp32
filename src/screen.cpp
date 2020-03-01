@@ -37,6 +37,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 
+#define EVENT_BLUETOOTH_PAIR 7
+
 #ifdef I2C_SDA
 SSD1306Wire dispdev(SSD1306_ADDRESS, I2C_SDA, I2C_SCL);
 #else
@@ -93,6 +95,8 @@ static char btPIN[16] = "888888";
 
 void drawFrameBluetooth(OLEDDisplay *display, OLEDDisplayUiState *state, int16_t x, int16_t y)
 {
+    // Demonstrates the 3 included default sizes. The fonts come from SSD1306Fonts.h file
+    // Besides the default fonts there will be a program to convert TrueType fonts into this format
     DEBUG_MSG("Trying to pair bluetooth PIN %s\n", btPIN);
     display->setTextAlignment(TEXT_ALIGN_CENTER);
     display->setFont(ArialMT_Plain_16);
@@ -107,7 +111,6 @@ void drawFrameBluetooth(OLEDDisplay *display, OLEDDisplayUiState *state, int16_t
 
     ui.disableIndicator();
 }
-
 
 void drawFrame2(OLEDDisplay *display, OLEDDisplayUiState *state, int16_t x, int16_t y)
 {
