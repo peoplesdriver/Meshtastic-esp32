@@ -84,23 +84,30 @@ void drawBootScreen(OLEDDisplay *display, OLEDDisplayUiState *state, int16_t x, 
 
 static char btPIN[16] = "888888";
 
+#ifdef BOARD_MAKERHAWK
+// devices with tiny screens need to use tiny fonts
+#define FONT_LARGEST ArialMT_Plain_10
+#else 
+#define FONT_LARGEST ArialMT_Plain_24
+#endif 
+
 void drawFrameBluetooth(OLEDDisplay *display, OLEDDisplayUiState *state, int16_t x, int16_t y)
 {
-    // Demonstrates the 3 included default sizes. The fonts come from SSD1306Fonts.h file
-    // Besides the default fonts there will be a program to convert TrueType fonts into this format
+    DEBUG_MSG("Trying to pair bluetooth PIN %s\n", btPIN);
     display->setTextAlignment(TEXT_ALIGN_CENTER);
     display->setFont(ArialMT_Plain_16);
-    display->drawString(64 + x, 2 + y, "Bluetooth");
+    display->drawString(SCREEN_WIDTH/2 + x, 2 + y, "Bluetooth");
 
     display->setFont(ArialMT_Plain_10);
-    display->drawString(64 + x, SCREEN_HEIGHT - FONT_HEIGHT + y, "Enter this code");
+    display->drawString(SCREEN_WIDTH/2 + x, SCREEN_HEIGHT - FONT_HEIGHT + y, "Enter this code");
 
     display->setTextAlignment(TEXT_ALIGN_CENTER);
-    display->setFont(ArialMT_Plain_24);
-    display->drawString(64 + x, 22 + y, btPIN);
+    display->setFont(FONT_LARGEST);
+    display->drawString(SCREEN_WIDTH / 2 + x, 22 + y, btPIN);
 
     ui.disableIndicator();
 }
+
 
 void drawFrame2(OLEDDisplay *display, OLEDDisplayUiState *state, int16_t x, int16_t y)
 {
