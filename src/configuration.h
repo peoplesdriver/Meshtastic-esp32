@@ -41,9 +41,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // -----------------------------------------------------------------------------
 
 // Select which board is being used. If the outside build environment has sent a choice, just use that
-#if !defined(T_BEAM_V10) && !defined(HELTEC_LORA32)
+#if !defined(T_BEAM_V10) && !defined(HELTEC_LORA32) && !defined(HELTEC_LORA32STICK)
 // #define T_BEAM_V10  // AKA Rev1 (second board released)
 #define HELTEC_LORA32
+
+#define HELTEC_LORA32STICK
 
 #define HW_VERSION_US // We encode the hardware freq range in the hw version string, so sw update can eventually install the correct build
 #endif

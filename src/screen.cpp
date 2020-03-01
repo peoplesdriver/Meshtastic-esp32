@@ -34,8 +34,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define FONT_HEIGHT 14 // actually 13 for "ariel 10" but want a little extra space
 #define FONT_HEIGHT_16 (ArialMT_Plain_16[1] + 1)
+
+#ifdef HELTEC_LORA32STICK
+#define SCREEN_WIDTH 64
+#define SCREEN_HEIGHT 32
+#else
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
+#endif
 
 #define EVENT_BLUETOOTH_PAIR 7
 
@@ -86,7 +92,7 @@ void drawBootScreen(OLEDDisplay *display, OLEDDisplayUiState *state, int16_t x, 
 
 static char btPIN[16] = "888888";
 
-#ifdef BOARD_MAKERHAWK
+#ifdef HELTEC_LORA32STICK
 // devices with tiny screens need to use tiny fonts
 #define FONT_LARGEST ArialMT_Plain_10
 #else 

@@ -47,5 +47,6 @@
     "cSpell.words": [
         "Meshtastic",
         "descs"
-    ]
+    ],
+    "C_Cpp.dimInactiveRegions": false
 }
